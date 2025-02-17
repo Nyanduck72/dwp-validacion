@@ -17,6 +17,13 @@ export const createUser = (user: User) => {
     },
     body: JSON.stringify({ email, username, password }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        return res.json().then((error) => {
+          throw new Error(error.message);
+        });
+      }
+      return res.json();
+    })
     .then((data) => data.id);
 };

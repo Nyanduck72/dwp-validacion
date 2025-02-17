@@ -52,9 +52,15 @@ const RegisterForm = () => {
       email: email,
       password: password,
     };
-    createUser(user).catch((error) => console.error(error));
+    createUser(user)
+      .then(() => {
+        alert("Usuario registrado con éxito");
+        window.location.reload();
+      })
+      .catch((error) => {
+        alert(`Error: ${error.message}`);
+      });
   };
-
   return (
     <>
       <div className="w-1/3 p-4 rounded-lg bg-neutral-50 shadow-lg">
@@ -178,7 +184,6 @@ const RegisterForm = () => {
                 e.preventDefault();
                 return;
               } else {
-                e.preventDefault();
                 exportUser(name, email, password);
               }
             }}
