@@ -4,7 +4,12 @@ const SERVER: string = "localhost:3000/api";
 
 export const getUserById = (id: number) => {
   return fetch(`http://${SERVER}/user/${id}`)
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 404) {
+        throw new Error("404");
+      }
+      return res.json();
+    })
     .then((data) => data.user);
 };
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { Switch, Route } from "wouter";
 import Register from "./pages/register";
+import RegisteredUserCheck from "./pages/registeredUserCheck";
 
 function App() {
   const [isJumpscared, setIsJumpscared] = useState<boolean>(false);
@@ -30,7 +31,7 @@ function App() {
       )}
       <Switch>
         <Route path={"/"} component={Register}></Route>
-        Log in
+        <Route path={"/registered-users"} component={RegisteredUserCheck}></Route>
       </Switch>
     </>
   );

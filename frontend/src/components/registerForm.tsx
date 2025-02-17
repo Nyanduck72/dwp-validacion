@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import type { User } from "../types";
 import { Eye, EyeOff } from "lucide-react";
 import { createUser } from "../service/endpoints";
+import { Link } from "wouter";
 
 const RegisterForm = () => {
   // Register form states
@@ -190,6 +191,9 @@ const RegisterForm = () => {
           >
             Registrar Usuario
           </button>
+          <Link className="w-full mt-4" href="/registered-users">
+            <a className="w-full text-center text-blue-500 underline">Ya registraste un usuario? Verifica su información</a>
+          </Link>
         </div>
       </div>
     </>
